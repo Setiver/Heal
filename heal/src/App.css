@@ -14,7 +14,6 @@ body {
 
 .control {
   font-family: inherit;
-  text-align: justify;
   display: block;
   position: relative;
   padding-left: 30px;
@@ -31,7 +30,7 @@ body {
 .control_indicator {
   position: absolute;
   top: 2px;
-  left: 0;
+  left: 40%;
   height: 20px;
   width: 20px;
   background: #e6e6e6;
@@ -121,6 +120,8 @@ body {
 }
 .control-checkbox input + .control_indicator::before {
   animation: s-ripple 250ms ease-out;
+  left: -20%;
+  top: -10%;
 }
 .control-checkbox input:checked + .control_indicator::before {
   animation-name: s-ripple-dup;
@@ -135,11 +136,16 @@ body {
   top: -3%;
   left: 50%;
 }
-.wounds {
-  width: 30rem;
+
+.table {
+  max-width: 44rem;
   position: absolute;
   transform: translate(-50%, -50%);
   left: 50%;
-  top: 30%;
-  text-align-last: justify;
+  top: 110%;
+  text-align-last: center;
+}
+
+.table-wounds {
+  font-size: 1.5rem;
 }

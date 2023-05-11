@@ -41,365 +41,660 @@ const Heal = () => {
   }
 
   useEffect(() => {
-    const filteredtimeHeal = timeHeal.filter(value => value !== 0);
+    const filteredTimeHeal = timeHeal.filter(value => value !== 0);
     const filteredCost = moneyRepair.filter(value => value !== 0);
     const filteredTimeRepair = timeRepair.filter(value => value !== 0);
-    setFullTimeHeal(filteredtimeHeal.reduce((acc, cur) => acc + cur, 0));
+
+    setFullTimeHeal(filteredTimeHeal.reduce((acc, cur) => acc + cur, 0));
     setFullCost(filteredCost.reduce((acc, cur) => acc + cur, 0));
     setFullTimeCost(filteredTimeRepair.reduce((acc, cur) => acc + cur, 0));
   }, [timeHeal, moneyRepair, timeRepair]);
 
+  // ------------------------ //
   return (
     <>
       <div className="pacient">
         <img src={tablica} alt="Tablica" />
       </div>
 
-      <div className="control-group">
+      <div className="control-group"></div>
+      {/* -------------------------- */}
+
+      <table class="table table-success table-striped table-bordered ">
         {/* -------------------Wounds------------------- */}
-        <div className="wounds">
-          <h1>Wounds</h1>
-          <label className="control control-checkbox">
-            Scratch - 6h - 10G - 30m
-            <input
-              type="checkbox"
-              checked={checked[0]}
-              onChange={() => handleCheck(0, 6, 10, 0.5)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Few Cuts - 12h - 30G - 1h
-            <input
-              type="checkbox"
-              checked={checked[1]}
-              onChange={() => handleCheck(1, 12, 30, 1)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Dozen Cuts - 24h - 70G - 2h
-            <input
-              type="checkbox"
-              checked={checked[2]}
-              onChange={() => handleCheck(2, 24, 70, 2)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Tens Cuts - 2d - 100G - 6h
-            <input
-              type="checkbox"
-              checked={checked[3]}
-              onChange={() => handleCheck(3, 2 * 24, 100, 6)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Severed skin - 2d - 300G - 3h
-            <input
-              type="checkbox"
-              checked={checked[30]}
-              onChange={() => handleCheck(30, 2 * 24, 300, 3)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Torn tendons - 4d - 1.000G - 12h
-            <input
-              type="checkbox"
-              checked={checked[4]}
-              onChange={() => handleCheck(4, 4 * 24, 1000, 12)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-        </div>
-        {/* -------------------------------------- */}
-
-        {/* -------------------Burns------------------- */}
-        <div className="burns">
-          <h1>Burns</h1>
-
-          <label className="control control-checkbox">
-            1st degree - 1d - 50G - 2h
-            <input
-              type="checkbox"
-              checked={checked[5]}
-              onChange={() => handleCheck(5, 24, 50, 2)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            2nd degree - 3d - 100G - 5h
-            <input
-              type="checkbox"
-              checked={checked[6]}
-              onChange={() => handleCheck(6, 3 * 24, 100, 5)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            3rd degree - 10d - 200G - 1d
-            <input
-              type="checkbox"
-              checked={checked[7]}
-              onChange={() => handleCheck(7, 10 * 24, 200, 24)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            4th degree - 25d - 1.500G - 4d
-            <input
-              type="checkbox"
-              checked={checked[8]}
-              onChange={() => handleCheck(8, 25 * 24, 1500, 4 * 24)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-        </div>
-
-        {/* -------------------Breaks------------------- */}
-        <div className="breaks">
-          <h1>Breaks</h1>
-
-          <label className="control control-checkbox">
-            Finger - 4d - 400G - 1d
-            <input
-              type="checkbox"
-              checked={checked[9]}
-              onChange={() => handleCheck(9, 4 * 24, 400, 24)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Arm - 7d - 2.000G - 2d
-            <input
-              type="checkbox"
-              checked={checked[10]}
-              onChange={() => handleCheck(10, 7 * 24, 2000, 2 * 24)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Leg - 8d - 2.500G - 2.5d
-            <input
-              type="checkbox"
-              checked={checked[11]}
-              onChange={() => handleCheck(11, 8 * 24, 2500, 2.5 * 24)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Ribs - 10d - 3.000G - 2d
-            <input
-              type="checkbox"
-              checked={checked[12]}
-              onChange={() => handleCheck(12, 10 * 24, 3000, 2 * 24)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Skull - 40d - 5.000G - 5d
-            <input
-              type="checkbox"
-              checked={checked[13]}
-              onChange={() => handleCheck(13, 40 * 24, 5000, 5 * 24)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Spine - 80d - 20.000G - 10d
-            <input
-              type="checkbox"
-              checked={checked[14]}
-              onChange={() => handleCheck(14, 80 * 24, 20000, 10 * 24)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-        </div>
-
-        {/* -------------------Loss------------------- */}
-        <div className="loss">
-          <h1>Loss of</h1>
-
-          <label className="control control-checkbox">
-            Finger - 14d - 1.000G - 2d
-            <input
-              type="checkbox"
-              checked={checked[15]}
-              onChange={() => handleCheck(15, 14 * 24, 1000, 2 * 24)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Hand - 40d - 5.000G - 3d
-            <input
-              type="checkbox"
-              checked={checked[16]}
-              onChange={() => handleCheck(16, 7 * 24, 5000, 1.5 * 24)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Arm - 100d - 20.000G - 10d
-            <input
-              type="checkbox"
-              checked={checked[17]}
-              onChange={() => handleCheck(17, 100 * 24, 20000, 10 * 24)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Foot - 40d - 6.000G - 4d
-            <input
-              type="checkbox"
-              checked={checked[18]}
-              onChange={() => handleCheck(18, 40 * 24, 6000, 4 * 24)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Leg - 110d - 21.000G - 12d
-            <input
-              type="checkbox"
-              checked={checked[19]}
-              onChange={() => handleCheck(19, 110 * 24, 21000, 12 * 24)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Eye - 520d - 80.000G - 40d
-            <input
-              type="checkbox"
-              checked={checked[20]}
-              onChange={() => handleCheck(20, 520 * 24, 80000, 40 * 24)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Nose - 80d - 30.000G - 10d
-            <input
-              type="checkbox"
-              checked={checked[21]}
-              onChange={() => handleCheck(21, 100 * 24, 30000, 10 * 24)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Ear - 50d - 20.000G - 6d
-            <input
-              type="checkbox"
-              checked={checked[22]}
-              onChange={() => handleCheck(22, 50 * 24, 20000, 6 * 24)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Tongue - 60d - 20.000G - 6d
-            <input
-              type="checkbox"
-              checked={checked[23]}
-              onChange={() => handleCheck(23, 60 * 24, 20000, 6 * 24)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Dick - 69d - 6.900G - 6d 9h
-            <input
-              type="checkbox"
-              checked={checked[24]}
-              onChange={() => handleCheck(24, 69 * 24, 6900, 6 * 24 + 9)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Hair - 7d - 1.000G - 1d
-            <input
-              type="checkbox"
-              checked={checked[25]}
-              onChange={() => handleCheck(25, 7 * 24, 20000, 24)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-        </div>
-        {/* -------------------diseases------------------- */}
-        <div className="diseases">
-          <h1>Diseases</h1>
-
-          <label className="control control-checkbox">
-            Simple - 3d - 100G - 2h
-            <input
-              type="checkbox"
-              checked={checked[26]}
-              onChange={() => handleCheck(26, 3 * 24, 100, 2)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Moderate - 14d - 500G - 12h
-            <input
-              type="checkbox"
-              checked={checked[27]}
-              onChange={() => handleCheck(27, 14 * 24, 500, 12)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Severe - 60d - 4.000G - 6d
-            <input
-              type="checkbox"
-              checked={checked[28]}
-              onChange={() => handleCheck(28, 60 * 24, 4.0, 6 * 24)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-          <label className="control control-checkbox">
-            Deadly - 520d - 100.000G - 20d
-            <input
-              type="checkbox"
-              checked={checked[29]}
-              onChange={() => handleCheck(29, 520 * 25, 100000, 20 * 24)}
-            />
-            <div className="control_indicator"></div>
-          </label>
-        </div>
-        {/* -------------------------------------- */}
-      </div>
-      {/* -------------------Hours------------------- */}
-      <div>
-        <p>Hours: {fullTimeHeal} </p>
-        <p>Days: {Math.round((fullTimeHeal / 24) * 10) / 10} </p>
-        <p>Cost: {fullCost} </p>
-        <p>Payed Time Hours: {fullTimeCost}</p>
-        <p>Payed Time Days: {Math.round((fullTimeCost / 24) * 10) / 10}</p>
-      </div>
-      <table className="table table-dark table-striped">
         <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+          <tr className="table-danger table-wounds">
+            <th scope="col" colspan="5">
+              Wounds
+            </th>
+          </tr>
+        </thead>
+        <thead>
+          <tr className="table-danger">
+            <th scope="col">✅</th>
+            <th scope="col">Injury</th>
+            <th scope="col">Time</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Healing</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[0]}
+                  onChange={() => handleCheck(0, 6, 10, 0.5)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Scratch</td>
+            <td>6h</td>
+            <td>10G</td>
+            <td>30m</td>
           </tr>
           <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[1]}
+                  onChange={() => handleCheck(1, 12, 30, 1)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Few Cuts</td>
+            <td>12h</td>
+            <td>30G</td>
+            <td>1h</td>
           </tr>
           <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>qasd</td>
-            <td>@twitter</td>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[2]}
+                  onChange={() => handleCheck(2, 24, 70, 2)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td> Dozen Cuts</td>
+            <td>24h</td>
+            <td>70G</td>
+            <td>12h</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[3]}
+                  onChange={() => handleCheck(3, 2 * 24, 100, 6)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Tens Cuts</td>
+            <td>2d</td>
+            <td>100G</td>
+            <td>6h</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[30]}
+                  onChange={() => handleCheck(30, 2 * 24, 300, 3)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Severed skin</td>
+            <td>2d</td>
+            <td>300G</td>
+            <td>3h</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[4]}
+                  onChange={() => handleCheck(4, 4 * 24, 1000, 12)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Torn tendons</td>
+            <td>4d</td>
+            <td>1.000G</td>
+            <td>12h</td>
+          </tr>
+        </tbody>
+
+        {/* -------------------Burns------------------- */}
+
+        <thead>
+          <tr className="table-danger table-wounds">
+            <th scope="col" colspan="5">
+              Burns
+            </th>
+          </tr>
+        </thead>
+        <thead>
+          <tr className="table-danger">
+            <th scope="col">✅</th>
+            <th scope="col">Injury</th>
+            <th scope="col">Time</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Healing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[5]}
+                  onChange={() => handleCheck(5, 24, 50, 2)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>1st degree</td>
+            <td>1d</td>
+            <td>50G</td>
+            <td>2h</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[6]}
+                  onChange={() => handleCheck(6, 3 * 24, 100, 5)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>2nd degree</td>
+            <td>3d</td>
+            <td>100G</td>
+            <td>5h</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[7]}
+                  onChange={() => handleCheck(7, 10 * 24, 200, 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>3rd degree</td>
+            <td>10d</td>
+            <td>200G</td>
+            <td>1d</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[8]}
+                  onChange={() => handleCheck(8, 25 * 24, 1500, 4 * 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>4th degree</td>
+            <td>25d</td>
+            <td>1.500G</td>
+            <td>4d</td>
+          </tr>
+        </tbody>
+        {/* -------------------Breaks------------------- */}
+        <thead>
+          <tr className="table-danger table-wounds">
+            <th scope="col" colspan="5">
+              Breaks
+            </th>
+          </tr>
+        </thead>
+        <thead>
+          <tr className="table-danger">
+            <th scope="col">✅</th>
+            <th scope="col">Injury</th>
+            <th scope="col">Time</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Healing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[9]}
+                  onChange={() => handleCheck(9, 4 * 24, 400, 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Finger</td>
+            <td>4d</td>
+            <td>400G</td>
+            <td>1d</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[10]}
+                  onChange={() => handleCheck(10, 7 * 24, 2000, 2 * 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Arm</td>
+            <td>7d</td>
+            <td>2.000G</td>
+            <td>2d</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[11]}
+                  onChange={() => handleCheck(11, 8 * 24, 2500, 2.5 * 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Leg</td>
+            <td>8d</td>
+            <td>2.500G</td>
+            <td>2.5d</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[12]}
+                  onChange={() => handleCheck(12, 10 * 24, 3000, 2 * 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Ribs</td>
+            <td>10d</td>
+            <td>3.000G</td>
+            <td>2d</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[13]}
+                  onChange={() => handleCheck(13, 40 * 24, 5000, 5 * 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Skull</td>
+            <td>40d</td>
+            <td>5.000G</td>
+            <td>5d</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[14]}
+                  onChange={() => handleCheck(14, 80 * 24, 20000, 10 * 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Spine</td>
+            <td>80d</td>
+            <td>20.000G</td>
+            <td>10d</td>
+          </tr>
+        </tbody>
+        {/* -------------------LossOf------------------- */}
+        <thead>
+          <tr className="table-danger table-wounds">
+            <th scope="col" colspan="5">
+              Loss of
+            </th>
+          </tr>
+        </thead>
+        <thead>
+          <tr className="table-danger">
+            <th scope="col">✅</th>
+            <th scope="col">Injury</th>
+            <th scope="col">Time</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Healing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[15]}
+                  onChange={() => handleCheck(15, 14 * 24, 1000, 2 * 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Finger</td>
+            <td>14d</td>
+            <td>1.000G</td>
+            <td>2d</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[16]}
+                  onChange={() => handleCheck(16, 7 * 24, 5000, 1.5 * 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Hand</td>
+            <td>40d</td>
+            <td>5.000G</td>
+            <td>3d</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[16]}
+                  onChange={() => handleCheck(16, 7 * 24, 5000, 1.5 * 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Hand</td>
+            <td>40d</td>
+            <td>5.000G</td>
+            <td>3d</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[17]}
+                  onChange={() => handleCheck(17, 100 * 24, 20000, 10 * 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Arm</td>
+            <td>100d</td>
+            <td>20.000G</td>
+            <td>10d</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[18]}
+                  onChange={() => handleCheck(18, 40 * 24, 6000, 4 * 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Foot</td>
+            <td>40d</td>
+            <td>6.000G</td>
+            <td>4d</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[19]}
+                  onChange={() => handleCheck(19, 110 * 24, 21000, 12 * 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Leg</td>
+            <td>110d</td>
+            <td>21.000G</td>
+            <td>12d</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[20]}
+                  onChange={() => handleCheck(20, 520 * 24, 80000, 40 * 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Eye</td>
+            <td>520d</td>
+            <td>80.000G</td>
+            <td>40d</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[21]}
+                  onChange={() => handleCheck(21, 100 * 24, 30000, 10 * 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Nose</td>
+            <td>80d</td>
+            <td>30.000G</td>
+            <td>10d</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[22]}
+                  onChange={() => handleCheck(22, 50 * 24, 20000, 6 * 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Ear</td>
+            <td>50d</td>
+            <td>20.000G</td>
+            <td>6d</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[23]}
+                  onChange={() => handleCheck(23, 60 * 24, 20000, 6 * 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Tongue</td>
+            <td>60d</td>
+            <td>20.000G</td>
+            <td>6d</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[24]}
+                  onChange={() => handleCheck(24, 69 * 24, 6900, 6 * 24 + 9)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Dick</td>
+            <td>69d</td>
+            <td>6.900G</td>
+            <td>6d 9h</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[25]}
+                  onChange={() => handleCheck(25, 7 * 24, 20000, 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Hair</td>
+            <td>7d</td>
+            <td>1.000G</td>
+            <td>1d</td>
+          </tr>
+        </tbody>
+
+        {/* -------------------Diseases------------------- */}
+        <thead>
+          <tr className="table-danger table-wounds">
+            <th scope="col" colspan="5">
+              Diseases
+            </th>
+          </tr>
+        </thead>
+        <thead>
+          <tr className="table-danger">
+            <th scope="col">✅</th>
+            <th scope="col">Injury</th>
+            <th scope="col">Time</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Healing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[26]}
+                  onChange={() => handleCheck(26, 3 * 24, 100, 2)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Simple</td>
+            <td>3d</td>
+            <td>100G</td>
+            <td>2h</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[27]}
+                  onChange={() => handleCheck(27, 14 * 24, 500, 12)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Moderate</td>
+            <td>14d</td>
+            <td>500G</td>
+            <td>12h</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[28]}
+                  onChange={() => handleCheck(28, 60 * 24, 4.0, 6 * 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Severe</td>
+            <td>60d</td>
+            <td>4.000G</td>
+            <td>6d</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label className="control control-checkbox">
+                <input
+                  type="checkbox"
+                  checked={checked[29]}
+                  onChange={() => handleCheck(29, 520 * 25, 100000, 20 * 24)}
+                />
+                <div className="control_indicator"></div>
+              </label>
+            </th>
+            <td>Deadly</td>
+            <td>520d</td>
+            <td>100.000G</td>
+            <td>20d</td>
+          </tr>
+        </tbody>
+        {/* -------------------Summary------------------- */}
+        <thead>
+          <tr className="table-danger table-wounds">
+            <th scope="col" colspan="5">
+              Summary
+            </th>
+          </tr>
+        </thead>
+        <thead>
+          <tr className="table-danger">
+            <th scope="col">X</th>
+            <th scope="col">X</th>
+            <th scope="col">Time</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Healing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">X</th>
+            <td>X</td>
+            <td>{Math.round((fullTimeHeal / 24) * 10) / 10}d</td>
+            <td>{fullCost}G</td>
+            <td>{Math.round((fullTimeCost / 24) * 10) / 10}d</td>
           </tr>
         </tbody>
       </table>
