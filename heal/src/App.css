@@ -8,6 +8,7 @@ body {
   width: 100%;
   height: 100%;
   font-family: 'Raleway', Helvetica, Arial, sans-serif;
+  background-image: url('./res/background1.png');
 }
 
 /* nice input checkbox look */
@@ -16,14 +17,10 @@ body {
   font-family: inherit;
   display: block;
   position: relative;
-  padding-left: 30px;
-  margin-bottom: 5px;
-  padding-top: 3px;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 0rem;
 }
 .control input {
-  position: absolute;
   z-index: -1;
   opacity: 0;
 }
@@ -128,24 +125,106 @@ body {
 }
 
 /* ------------------------------------------------------ */
-.pacient {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  height: 1rem;
 
-  top: -3%;
-  left: 50%;
+.table-text-up {
+  font-size: 1.5rem;
 }
 
 .table {
-  max-width: 44rem;
+  max-width: 38rem;
+  table-layout: fixed;
   position: absolute;
   transform: translate(-50%, -50%);
-  left: 50%;
-  top: 110%;
   text-align-last: center;
 }
 
 .table-wounds {
-  font-size: 1.5rem;
+  left: 17%;
+  top: 20%;
+}
+
+.table-burns {
+  left: 17%;
+  top: 53.5%;
+}
+.table-breaks {
+  left: 83%;
+  top: 20%;
+}
+.table-diseases {
+  left: 83%;
+  top: 53.5%;
+}
+
+.table-lossof {
+  left: 50%;
+  top: 31%;
+}
+.table-summary {
+  left: 50%;
+  top: 30%;
+}
+
+.button-shower {
+  background-color: rgb(40, 41, 42);
+  border-radius: 14px;
+  border: 2px solid #1b1d1c;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 17px 47px;
+  text-decoration: none;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 65.5%;
+  left: 50%;
+}
+
+.button-shower:hover {
+  background-color: #5cbf2a;
+}
+
+.blur *:not(.no-blur) {
+  filter: blur(0.3rem);
+  animation: fadeout 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.99;
+  }
+}
+
+.blur-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.blur-overlay.visible {
+  display: block;
+  pointer-events: none;
+}
+
+.blocker {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: transparent;
+  z-index: 999;
+}
+
+.blocker.visible {
+  pointer-events: all;
 }
