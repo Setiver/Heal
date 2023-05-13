@@ -38,7 +38,6 @@ body {
 .control input:focus ~ .control_indicator {
   background: #cccccc;
 }
-
 .control input:checked ~ .control_indicator {
   background: #fd1214;
 }
@@ -134,59 +133,82 @@ body {
   max-width: 38rem;
   table-layout: fixed;
   position: absolute;
-  transform: translate(-50%, -50%);
   text-align-last: center;
 }
 
 .table-wounds {
-  left: 17%;
-  top: 20%;
+  left: 1%;
+  top: 2%;
 }
 
 .table-burns {
-  left: 17%;
-  top: 53.5%;
+  left: 1%;
+  top: 40%;
 }
+
+@-moz-document url-prefix() {
+  .table-burns {
+    left: 1%;
+    top: 41.5%;
+  }
+}
+
 .table-breaks {
-  left: 83%;
-  top: 20%;
+  top: 2%;
+  left: 67%;
 }
+
 .table-diseases {
-  left: 83%;
-  top: 53.5%;
+  left: 67%;
+  top: 57.5%;
+}
+
+@-moz-document url-prefix() {
+  .table-diseases {
+    left: 67%;
+    top: 60%;
+  }
 }
 
 .table-lossof {
-  left: 50%;
-  top: 31%;
+  top: 2%;
+  left: 34%;
 }
 .table-summary {
-  left: 50%;
-  top: 30%;
+  left: 34%;
+  top: 10%;
 }
 
+/* button summary */
 .button-shower {
   background-color: rgb(40, 41, 42);
-  border-radius: 14px;
-  border: 2px solid #1b1d1c;
+  border-radius: 1rem;
+  border: 0.3rem solid #1b1d1c;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
   font-family: Arial;
-  font-size: 18px;
+  font-size: 2rem;
   font-weight: bold;
-  padding: 17px 47px;
   text-decoration: none;
   position: absolute;
-  transform: translate(-50%, -50%);
-  top: 65.5%;
-  left: 50%;
+  width: 12rem;
+  height: 4rem;
+  top: 70%;
+  left: 12%;
+}
+
+@-moz-document url-prefix() {
+  .button-shower {
+    top: 72%;
+    left: 12%;
+  }
 }
 
 .button-shower:hover {
   background-color: #5cbf2a;
 }
-
+/* to click outside of summary */
 .blur *:not(.no-blur) {
   filter: blur(0.3rem);
   animation: fadeout 0.3s ease-in-out forwards;
