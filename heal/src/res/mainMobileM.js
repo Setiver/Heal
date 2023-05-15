@@ -153,7 +153,8 @@ const HealMoblie = () => {
           className={`app ${
             show || showWounds || showBurns || showBreaks || showLoss || showDiseases ? 'blur' : ''
           }`}>
-          {/*------------------- button to show -------------------*/}
+          {/*------------------- buttons to show -------------------*/}
+
           <button className="button-shower summary" onClick={() => handleShowClick(setShow, show)}>
             Summary
           </button>
