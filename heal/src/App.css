@@ -12,22 +12,27 @@ body {
 }
 
 /* nice input checkbox look */
-
 .control {
-  font-family: inherit;
+  font-family: arial;
   display: block;
   position: relative;
+  text-align: center;
+  left: 40%;
+  padding-left: 30px;
+  margin-bottom: 5px;
+  padding-top: 3px;
   cursor: pointer;
-  font-size: 0rem;
+  font-size: 16px;
 }
 .control input {
+  position: absolute;
   z-index: -1;
   opacity: 0;
 }
 .control_indicator {
   position: absolute;
   top: 2px;
-  left: 40%;
+  left: 0;
   height: 20px;
   width: 20px;
   background: #e6e6e6;
@@ -38,12 +43,13 @@ body {
 .control input:focus ~ .control_indicator {
   background: #cccccc;
 }
+
 .control input:checked ~ .control_indicator {
-  background: #fd1214;
+  background: #2aa1c0;
 }
 .control:hover input:not([disabled]):checked ~ .control_indicator,
 .control input:checked:focus ~ .control_indicator {
-  background: #ff0000;
+  background: #0e6647;
 }
 .control input:disabled ~ .control_indicator {
   background: #e6e6e6;
@@ -71,58 +77,6 @@ body {
 .control-checkbox input:disabled ~ .control_indicator:after {
   border-color: #7b7b7b;
 }
-.control-checkbox .control_indicator::before {
-  content: '';
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 4.5rem;
-  height: 4.5rem;
-  margin-left: -1.3rem;
-  margin-top: -1.3rem;
-  background: #ff0000;
-  border-radius: 3rem;
-  opacity: 0.6;
-  z-index: 99999;
-  transform: scale(0);
-}
-@keyframes s-ripple {
-  0% {
-    transform: scale(0);
-  }
-  20% {
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1);
-  }
-}
-@keyframes s-ripple-dup {
-  0% {
-    transform: scale(0);
-  }
-  30% {
-    transform: scale(1);
-  }
-  60% {
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1);
-  }
-}
-.control-checkbox input + .control_indicator::before {
-  animation: s-ripple 250ms ease-out;
-  left: -20%;
-  top: -10%;
-}
-.control-checkbox input:checked + .control_indicator::before {
-  animation-name: s-ripple-dup;
-}
-
 /* ------------------------------------------------------ */
 
 .table-text-up {
