@@ -9,6 +9,7 @@ const HealMoblie = () => {
   const [injuryHolder, setInjuryHolder] = useState(Array(30).fill(0));
 
   const [fullTimeHeal, setFullTimeHeal] = useState([]);
+  const [fullPrice, setFullPrice] = useState(0);
 
   const [show, setShow] = useState(false);
 
@@ -65,6 +66,12 @@ const HealMoblie = () => {
       setInjuryHolder(newInjury);
     }
   }
+  useEffect(() => {
+    setFullPrice(
+      moneyRepair.reduce((sum, num) => sum + num),
+      0
+    );
+  }, [moneyRepair]);
 
   useEffect(() => {
     const fullArrayOfAll = timeHeal
@@ -489,6 +496,13 @@ const HealMoblie = () => {
           <tbody>
             <MedicalBill />
           </tbody>
+          <tfoot>
+            <tr className="table-text-up">
+              <th scope="col" colSpan="5">
+                Full Cost: {fullPrice}
+              </th>
+            </tr>
+          </tfoot>
         </table>
       ) : (
         ''

@@ -10,6 +10,7 @@ const Heal = () => {
   const [injuryHolder, setInjuryHolder] = useState(Array(30).fill(0));
 
   const [fullTimeHeal, setFullTimeHeal] = useState([]);
+  const [fullPrice, setFullPrice] = useState(0);
 
   const [show, setShow] = useState(false);
 
@@ -51,6 +52,13 @@ const Heal = () => {
   }
 
   useEffect(() => {
+    setFullPrice(
+      moneyRepair.reduce((sum, num) => sum + num),
+      0
+    );
+  }, [moneyRepair]);
+
+  useEffect(() => {
     const fullArrayOfAll = timeHeal
       .map((time, index) => ({
         time: time,
@@ -74,6 +82,7 @@ const Heal = () => {
         return modifiedObj;
       })
       .sort((a, b) => b.time - a.time);
+
     setFullTimeHeal(finalTimeHeal);
   }, [timeHeal, moneyRepair, timeRepair, injuryHolder]);
 
@@ -449,6 +458,13 @@ const Heal = () => {
           <tbody>
             <MedicalBill />
           </tbody>
+          <tfoot>
+            <tr className="table-text-up">
+              <th scope="col" colSpan="5">
+                Full Cost: {fullPrice}
+              </th>
+            </tr>
+          </tfoot>
         </table>
       ) : (
         ''
